@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+ "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
+
+<link rel="stylesheet" type="text/css" href="quizwizard.css" />
+<script type="text/javascript" src="takequiz.js"></script>
+
+<title>Take Quiz</title>
+    
+</head>
+
+
+<body onload="init()">
+
+    <div class="container" id="container">
+        <p>You have <span>~15s</span> per question! </p>
+            <p>Click 'start' when you're ready. When the timer runs out, you will not be able to edit or add to your answers. </p><p>Your score won't go through unless you click submit.
+        </p>
+        
+        <p><button onclick="start()">Start Quiz</button></p>
+        
+        <form id="form1" action="getresults.php" method="get">
+            <fieldset>
+        <input type="hidden" id="qname" name="qname" value=""/>
+        <table id="questionstable">
+            <caption id="tablecaption">quiz</caption>
+        <tr>
+        <th>Questions</th>  
+        <th>Your Answer</th>    
+        </tr>
+         
+        </table>
+             
+           <p id="hidesubmit">Enter your name: <input type="text" name="user" value=""/>
+            <input type="submit" value="Submit!" /></p>
+        </fieldset>
+        </form>
+        
+        <div id="timerdiv"></div>
+<p>
+    <a href="http://validator.w3.org/check?uri=referer"><img
+      src="http://www.w3.org/Icons/valid-xhtml11" alt="Valid XHTML 1.1" height="31" width="88" /></a>
+  </p>
+</div>
+</body>
+</html>
+

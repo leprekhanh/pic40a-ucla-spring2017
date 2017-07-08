@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+ "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
+<title>JavaScript HW3</title>
+    
+<style type="text/css">
+
+    button {
+        background-color: white;
+        color: midnightblue;
+        font-weight: bold;
+        font-family: verdana; 
+        font-size: 12pt;
+        text-align: center;
+        border-radius: 6px;
+        border: 1px solid grey;
+        width: 35px;
+        height: 35px;
+    }
+    
+    .operate {
+        background-color: darkblue;
+        color: white;
+    }
+
+    #display {
+        font-family: verdana;
+        font-size: 14pt;
+        font-weight: bold;
+        width: 146px;
+        padding: 2px 0px 0px 4px;
+        border-radius: 4px;
+    }
+    
+    div {
+        border-radius: 4px;
+        border: 1px solid grey;
+        background-color: skyblue;
+        text-align: center;
+        width: 180px;
+    }
+
+    button:active {
+        opacity: 0.2;
+    }
+</style>
+
+    
+<script type="text/javascript">
+<!-- 
+
+    var number1 = 0;
+    var number2 = 0;
+    var total = 0;
+    var operation = "";
+    var textbox = "";
+
+    
+    //Function code provided by the professor. It takes as argument a string or a number and displays it in the box in the window
+     function display(num) {
+        var node = document.getElementById("display");  
+		node.value = num;
+     }
+    
+    /* Obtains the number input by the user and displays it in the textbox. 
+    Also concatenates the number if the user wants to enter a non-single number. */
+   
+    function store(button_clicked) {
+        if (textbox === "")
+        {
+            textbox = button_clicked.value;
+            display(textbox);
+        }
+        else 
+        {
+            textbox = textbox + button_clicked.value;
+            display(textbox);
+        }
+    }
+    
+    /* Obtains the operator input cicked by the user and stores it.
+    Also store the current value in the textbox as number1.
+    The function calculate() is called when the user click a second operator so that the first operation
+    between the first two numbers can be calculated. */
+    
+    function operator(operator_input)
+    {
+        /*Call the function calculate() when the variable operation is not an empty string*/
+        if (operation !== "")
+        {
+            calculate();
+        }
+        
+        //Stores the current value in the textbox as number1
+        number1 = document.getElementById("display").value;
+        
+        //Stores which operation the user wants to execute
+        operation = operator_input;
+        
+        textbox = "";        
+    }
+    
+    /* Obtain the current number in the textbox as number2.
+    Perform the corresponding operation input by the user between number1 and number2.
+    Display the new calculated value in the textbox. */
+    function calculate()
+    {
+        number2 = document.getElementById("display").value;
+        if (operation === "-")
+        {   
+            total = number1 - number2; 
+        }
+        else if (operation === "+")
+        {   
+            total = (Number(number1) + Number(number2));
+        }
+        else if (operation === "*")
+        {   
+            total = (number1 * number2);
+        }
+        else if (operation === "^")
+        {   
+            total = (Math.pow(number1, number2));
+        }
+        else 
+        {   
+            total = (number1 / number2);
+        }
+        
+        if (isNaN(total))
+            {
+                display("Invalid input!");
+            }
+        else 
+            {
+            display(total);
+            }
+        
+        textbox = "";
+        operation = "";
+    }
+	 
+//-->
+
+</script>
+</head>
+<body> 
+<h1>Simple calculator</h1>
+
+<!--This is the text box where numbers will be displayed.  Call the display function to show a number here -->
+<div><form action="" method="get">
+<p>
+	<input type="text" id="display"/>
+</p>
+</form>
+    
+<!-- Buttons that user can use to input numbers and operations -->
+
+<p>
+<button onclick="store(this)" value="7"> 7 </button>
+<button onclick="store(this)" value="8"> 8 </button>
+<button onclick="store(this)" value="9"> 9 </button>
+<button class="operate" onclick="operator('/')"> / </button>
+</p>
+<p>
+<button onclick="store(this)" value="4"> 4 </button>
+<button onclick="store(this)" value="5"> 5 </button>
+<button onclick="store(this)" value="6"> 6 </button>
+<button class="operate" onclick="operator('*')"> * </button>
+</p>
+<p>
+<button onclick="store(this)" value="1"> 1 </button>
+<button onclick="store(this)" value="2"> 2 </button>
+<button onclick="store(this)" value="3"> 3 </button>
+<button class="operate" onclick="operator('-')" > - </button>
+</p>
+<p>
+<button onclick="store(this)" value="."> . </button>
+<button onclick="store(this)" value="0"> 0 </button>
+<button class="operate" onclick="calculate()"> = </button>
+<button class="operate" onclick="operator('+')"> + </button>
+</p>
+</div>
+<!-- W3C XHTML Validation logo-->
+<p>
+  <a href="http://validator.w3.org/check?uri=referer"><img
+     src="http://www.w3.org/Icons/valid-xhtml11"
+     alt="Valid XHTML 1.1" height="31" width="88" /></a>
+</p>
+</body>
+</html>

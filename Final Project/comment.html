@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+ "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
+<title>Comment</title>
+<link rel="stylesheet" type="text/css" href="quizwizard.css" />
+<script type="text/javascript" src="comment.js"></script>
+
+
+</head>
+        
+
+<body onload="init()">
+
+	<div class="containercomment" id="container">	
+        
+        <h2 id="commentname"></h2>
+        <p></p>
+        <br /><b>Name:</b>
+        <input type="text" id="commentuser"/>
+        <p><b>Comment:</b></p>
+        <input type="text" id="newcomment"/>
+        <br /><br />
+
+        <input type="button" onclick="newcomment()" value="Post comment" />
+        <input type="button" onclick="save()" value="Save comment" />
+        <input type="button" onclick="loadsaved()" value="Load comment" />
+        
+        <ul id="comments"><li></li></ul>
+        
+        <a href="http://pic.ucla.edu/~leprekhanh/final_project/quizwizard.html"><button>Go back to the forum</button></a> 
+        <a id="highscore" href=""><button>View highscore on this quiz</button></a>
+        <a id="takequiz" href=""><button>Take this quiz</button></a>
+        
+         <p>
+    <a href="http://validator.w3.org/check?uri=referer"><img
+      src="http://www.w3.org/Icons/valid-xhtml11" alt="Valid XHTML 1.1" height="31" width="88" /></a>
+  </p>
+	</div>	
+    
+    
+</body>
+</html>
+

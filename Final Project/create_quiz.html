@@ -1,0 +1,147 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+ "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
+
+<link rel="stylesheet" type="text/css" href="quizwizard.css" />
+
+<title>Create Quiz</title>
+
+    <script type="text/javascript">
+    
+    //Variable used to keep track of the total number of questions    
+    var countq = 1; 
+        
+    /* Function to create new input fields for a new question/answer, 
+    also updates the total number of questions countq */
+   function addQ()
+    {
+        if (document.getElementById("qname").value == "") {
+            
+            alert("Please enter a quiz name!");
+        }
+        
+        else {
+             
+            countq++; //Update total of questions
+            var qdiv = document.getElementById("questions");
+            var quest = document.createElement("label");
+            quest.innerHTML = "Question " + countq + "\u0020";
+            qdiv.appendChild(quest);
+
+            var qinput = document.createElement("input");
+            var qx = "question" + countq; //Update value for the question input
+            var ax = "answer" + countq; //Update value for the answer input
+
+            //Update the name and id of the question input
+            qinput.setAttribute("name", qx);
+            qinput.setAttribute("id", qx);
+
+            qdiv.appendChild(qinput);
+
+            var c1 = document.createElement("label");
+            c1.innerHTML = "\u0020Answer " + countq + "\u0020";
+            qdiv.appendChild(c1);
+
+            var choice1 = document.createElement("input");
+            
+            //Update the name and id of the answer input
+            choice1.setAttribute("name", ax);
+            choice1.setAttribute("id", ax);
+
+            var brb = document.createElement("br");
+
+            qdiv.appendChild(choice1);
+            qdiv.append(brb);
+
+            var choice = document.getElementById("hidden");
+
+            //Set the value for choice to be the number of total questions
+            choice.setAttribute("value", countq);            
+            }
+        
+        }
+        
+    /* This function delete the nodes for the last question/input */
+    function delQ() {
+        if (countq == 1)
+        {
+            alert("You need to include at least one question!");
+        }
+        else 
+        {
+            countq--;
+            var qdiv = document.getElementById("questions");
+            qdiv.removeChild(qdiv.lastChild);
+            qdiv.removeChild(qdiv.lastChild);
+            qdiv.removeChild(qdiv.lastChild);
+            qdiv.removeChild(qdiv.lastChild);
+            qdiv.removeChild(qdiv.lastChild);  
+            
+            var choice = document.getElementById("hidden");
+            choice.setAttribute("value", countq);
+        }
+    }
+    
+ 
+    </script>
+    
+</head>
+
+
+<body onload="init()">
+
+<div class="container">		
+    <p>*Put your name if you want to display it under creator name - if not, it will display anonymous. </p><p>You can keep clicking the button to add however many questions you want. Click 'done' when you're satisfied!</p>
+
+    <form id="form1" action="create_quiz.php" method="get">
+
+        <fieldset>
+	
+            <legend>Create a Quiz!</legend>
+
+            <label><b>Quiz Name</b></label>
+            
+            <input type="hidden" name="totalq" value="1" id="hidden"/>
+            <input type="text" name="qname" id="qname" value=""/>
+            
+            <br /><br />
+            
+            <label><b>First Name*</b></label>
+            <input class="stylized" type="text" id="fname" name="fname" value="anonymous"/><br /><br />
+            
+            <label><b>Last Name*</b></label>
+            <input class="stylized" type="text" id="lname" name="lname" value=""/>
+
+		
+
+            <div id="questions">
+            <br />
+            <label>Question 1</label>
+            <input class="stylized" type="text" id="question1" name="question1" value=""/>
+                
+            <label>Answer 1</label>
+            <input class="stylized" type="text" id="answer1" name="answer1" value=""/>
+            <br /></div>
+        
+            <br />
+
+            <input type="button" value="Add Another Question" onclick="addQ()"/>
+            <input type="button" value="Delete Previous Question" onclick="delQ()"/>
+            <input type="submit" value="Done" />
+        </fieldset>
+    </form>
+
+    <p><a href='http://pic.ucla.edu/~leprekhanh/final_project/quizwizard.html'>
+        <button>Go back to the forum</button></a></p>
+    
+    <p>
+    <a href="http://validator.w3.org/check?uri=referer"><img
+      src="http://www.w3.org/Icons/valid-xhtml11" alt="Valid XHTML 1.1" height="31" width="88" /></a>
+  </p>
+
+</div>
+</body>
+</html>
+
